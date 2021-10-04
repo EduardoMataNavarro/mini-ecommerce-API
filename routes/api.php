@@ -7,6 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ShipmentMethodController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\OrderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,12 @@ Route::post('/product', [ProductController::class, 'Create']);
 Route::put('/product/{id}', [ProductController::class, 'Edit']);
 Route::get('/product/{id}/images', [ProductController::class, 'GetWithImages']);
 
+/* Order routes */
+Route::get('/order', [OrderController::class, 'Index']);
+Route::get('/order/{id}', [OrderController::class, 'GetById']);
+Route::post('/order', [OrderController::class, 'Create']);
+Route::put('/order/{id}', [OrderController::class, 'Edit']);
+
 /* Product categories routes */
 Route::resource('productcategory', ProductCategoryController::class)->except([
     'edit', 'create',
@@ -47,6 +55,7 @@ Route::resource('paymentmethod', PaymentMethodController::class)->except([
 
 /* Generic form routes */
 Route::get('/genericform/{name}', [GenericFormController::class, 'GetByName']);
+
 
 
 

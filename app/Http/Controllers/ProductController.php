@@ -14,7 +14,10 @@ class ProductController extends Controller
 
     function GetById($slug) {
         return response()->json(
-            Product::where('slug', $slug)->with('ProductCategory')->first());
+            Product::where('slug', $slug)
+                    ->with('ProductCategory')
+                    ->with('ProductImage')
+                    ->first());
     }
 
     function Edit(Product $product, Request $request) {
