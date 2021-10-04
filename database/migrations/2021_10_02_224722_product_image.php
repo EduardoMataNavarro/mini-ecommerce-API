@@ -14,7 +14,7 @@ class ProductImage extends Migration
     public function up()
     {
         //
-        Schema::create('product_image', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->id();
             $table->string('path');
             $table->string('format');

@@ -9,11 +9,15 @@ class ProductController extends Controller
 {
     //
     function Index() {
-        return response()->json(Product::All());
+        return response()->json(Product::with('ProductImage')->get());
     }
 
     function GetById($slug) {
-        return response()->json(Product::where('slug', $slug)->first() ?? []);
+        return response()->json(
+            Product::where('slug', $slug)
+                    ->with('ProductCategory')
+                    ->with('ProductImage')
+                    ->first());
     }
 
     function Edit(Product $product, Request $request) {
